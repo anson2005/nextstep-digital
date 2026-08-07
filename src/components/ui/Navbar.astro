@@ -2,14 +2,14 @@
 import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
 
 const menuitems = [
-  { href: '/about', label: 'About us' },
+ { href: '/about', label: 'About' },
   { href: '/services', label: 'Services' },
-  { href: '/#cases', label: 'Use Cases' },
+{ href: '/#portfolio', label: 'Portfolio' },
   { href: '/pricing', label: 'Pricing' },
-  { href: '/articles', label: 'Blog'},
+  { href: '/contact', label: 'Contact' },
 ];
 
-const navButton = { href: 'https://github.com/manulthanura/Positivus', label: 'Request a quote' };
+const navButton = { href: '#contact', label: 'Get Free Consultation' };
 ---
 
 <div class="mt-20">
@@ -18,7 +18,11 @@ const navButton = { href: 'https://github.com/manulthanura/Positivus', label: 'R
       <Astronav>
         <div class="flex w-full lg:w-auto items-center justify-between">
           <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
-            <img src="/Logo.svg" class="h-8" alt="Logo" />
+       <img
+  src="/nextstep-logo.png"
+  class="h-24 w-auto"
+  alt="NextStep Digital"
+/>
           </a>
           <div class="block lg:hidden">
             <div id="menu-icon" class="w-8 h-8 text-black cursor-pointer">
@@ -62,7 +66,7 @@ const navButton = { href: 'https://github.com/manulthanura/Positivus', label: 'R
 
       <div>
         <div class="hidden lg:flex items-center gap-4">
-          <a class="px-9 py-5 rounded-2xl border border-zinc-900 bg-white hover:bg-black text-black hover:text-white inline-flex" href={navButton.href}>
+          <a class="px-9 py-5 rounded-2xl bg-zinc-900 hover:bg-blue-900 text-white inline-flex transition-all duration-300" href={navButton.href}>
             <h2 class="text-center text-xl font-normal leading-7">{navButton.label}</h2>
           </a>
         </div>
@@ -97,3 +101,4 @@ const navButton = { href: 'https://github.com/manulthanura/Positivus', label: 'R
     });
   });
 </script>
+

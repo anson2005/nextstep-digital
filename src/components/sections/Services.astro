@@ -13,60 +13,59 @@ import c6 from "../../assets/pics/card-pic6.png";
 const cards = [
   {
     index: 1,
+    titleTop: "Social Media",
+    titleBottom: "Management",
+    img: c1,
+    alt: "Social Media Management",
+    link: "/services/social-media-management",
+  },
+  {
+    index: 2,
+    titleTop: "Brand Strategy",
+    titleBottom: "& Positioning",
+    img: c2,
+    alt: "Brand Strategy & Positioning",
+    link: "/services/brand-strategy",
+  },
+  {
+    index: 3,
+    titleTop: "Graphic",
+    titleBottom: "Design",
+    img: c3,
+    alt: "Graphic Design",
+    link: "/services/graphic-design",
+  },
+  {
+    index: 4,
     titleTop: "Search Engine",
     titleBottom: "Optimization",
-    img: c1,
-    alt: "SEO",
-    link: "https://google.com",
-  },
-  {
-    index: 2,
-    titleTop: "Pay-per-click",
-    titleBottom: "advertising",
-    img: c2,
-    alt: "SEO",
-    link: "https://google.com",
-  },
-  {
-    index: 3,
-    titleTop: "Social Media",
-    titleBottom: "Marketing",
-    img: c3,
-    alt: "SEO",
-    link: "https://google.com",
-  },
-  {
-    index: 1,
-    titleTop: "Email",
-    titleBottom: "Marketing",
     img: c4,
-    alt: "SEO",
-    link: "https://google.com",
+    alt: "Search Engine Optimization",
+    link: "/services/seo",
   },
   {
-    index: 2,
+    index: 5,
+    titleTop: "Website",
+    titleBottom: "Development",
+    img: c5,
+    alt: "Website Development",
+    link: "/services/website-development",
+  },
+  {
+    index: 6,
     titleTop: "Content",
     titleBottom: "Creation",
-    img: c5,
-    alt: "SEO",
-    link: "https://google.com",
-  },
-  {
-    index: 3,
-    titleTop: "Analytics and",
-    titleBottom: "Tracking",
     img: c6,
-    alt: "SEO",
-    link: "https://google.com",
+    alt: "Content Creation",
+    link: "/services/content-creation",
   },
 ];
-
 const description =
-  "At our digital marketing agency, we offer a range of services to help businesses grow and succeed online. These services include";
+  "From strategy to execution, NextStep Digital helps your business grow with creative marketing solutions that deliver measurable results.";
 ---
 
 <Section id="services">
-  <div class="mt-[140px] mb-5">
+  <div class="mt-10 mb-5">
     <SectionTitle sectionTitle="Services" description={description} />
     <div class="grid lg:grid-cols-2 lg:grid-rows-3 gap-10">
       {
@@ -84,3 +83,5 @@ const description =
     </div>
   </div>
 </Section>
+
+

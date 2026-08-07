@@ -28,13 +28,14 @@
     background-color: transparent;
   }
 
-  :root {
-    --green: #b9ff66;
-    --black: rgb(0, 0, 0);
-    --dark: #191a23;
-    --gray: #f3f3f3;
-    --white: #ffffff;
-  }
+:root {
+  /* NextStep Digital Theme */
+  --green: #081B3A;   /* Navy Blue */
+  --black: #111827;
+  --dark: #081B3A;
+  --gray: #F8FAFC;
+  --white: #FFFFFF;
+}
 
   /* @layer base {
     * {
@@ -122,12 +123,14 @@
     }
 
     .greenhead {
-      @apply bg-green text-black rounded-[7px] px-[7px];
-    }
+  @apply text-white rounded-[7px] px-[7px];
+  background-color: #081B3A;
+}
 
     .whitehead {
-      @apply bg-white text-black rounded-[7px] px-[7px];
-    }
+  @apply text-white rounded-[7px] px-[7px];
+  background-color: #081B3A;
+}
 
     .blackhead {
       @apply bg-black text-white rounded-[7px] px-[7px];

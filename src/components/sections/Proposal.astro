@@ -3,31 +3,32 @@ import { Image } from "astro:assets";
 import Card from "../ui/Card.astro";
 import Section from "./Section.astro";
 
-import propImg from "../../assets/pics/proposal-pic.png";
 ---
 
 <Section>
   <Card>
-    <div
-      class="flex bg-[#F3F3F3] rounded-[45px] p-[60px] relative mt-[123px] mb-[163px]"
-    >
-      <div class="w-full md:w-[40%] flex flex-col gap-[26px]">
-        <h2 class="text-3xl font-medium">Let's make things happen</h2>
-        <p>
-          Contact us today to learn more about how our digital marketing
-          services can help your business grow and succeed online.
-        </p>
-        <button class="btn-primary">Get your free proposal</button>
-      </div>
-      <picture
-        class="hidden md:flex absolute right-[-10%] lg:right-0 top-[-15%] h-[450px] items-center justify-center"
-      >
-        <Image
-          src={propImg}
-          alt="This is an illustration"
-          class="hidden md:flex lg:h-full lg:w-auto"
-        />
-      </picture>
+   <div
+  class="flex justify-center bg-[#F3F3F3] rounded-[45px] p-[60px] mt-[123px] mb-[163px]"
+>
+  <div class="max-w-3xl flex flex-col items-center text-center gap-6">
+    <h2 class="text-4xl font-bold">
+      Ready to Grow Your Business?
+    </h2>
+
+    <p class="text-lg">
+      Partner with NextStep Digital to build a powerful online presence through
+      branding, social media management, website development, SEO, graphic
+      design, and content creation.
+    </p>
+
+    <button class="btn-primary">
+      Get Free Consultation
+    </button>
+  </div>
+</div>
+     
     </div>
   </Card>
 </Section>
+
+
