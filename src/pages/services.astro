@@ -1,170 +1,219 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import SectionTitle from "../components/ui/SectionTitle.astro";
-import Card from "../components/ui/Card.astro";
-import ServiceCard from "../components/ui/ServiceCard.astro";
-import { Image } from "astro:assets";
 
-import c1 from "../assets/pics/card-pic1.png";
-import c2 from "../assets/pics/card-pic2.png";
-import c3 from "../assets/pics/card-pic3.png";
-import c4 from "../assets/pics/card-pic4.png";
-import c5 from "../assets/pics/card-pic5.png";
-import c6 from "../assets/pics/card-pic6.png";
-
-// Definición detallada de cada servicio
 const services = [
   {
-    index: 1,
-    titleTop: "Search Engine",
-    titleBottom: "Optimization",
-    img: c1,
-    alt: "SEO",
-    description: "We optimize your website to rank higher in search engine results pages, driving more organic traffic to your site. Our SEO services include keyword research, on-page optimization, technical SEO, and link building strategies.",
-    benefits: ["Increased organic traffic", "Higher website rankings", "Better user experience", "Increased brand visibility"],
-    cta: "Get SEO Audit",
-    link: "/services/seo",
+    number: "01",
+    title: "Social Media Management",
+    description:
+      "Build a strong and consistent presence across social media with strategic content, creative posts, captions, community management, and ongoing account handling.",
+    items: [
+      "Content planning",
+      "Creative posts & stories",
+      "Captions & hashtags",
+      "Community management",
+    ],
   },
   {
-    index: 2,
-    titleTop: "Pay-per-click",
-    titleBottom: "advertising",
-    img: c2,
-    alt: "PPC",
-    description: "Our PPC services help you maximize your advertising budget by creating targeted campaigns that reach the right audience at the right time. We manage campaigns across Google Ads, Bing Ads, and social media platforms.",
-    benefits: ["Immediate website traffic", "Highly targeted advertising", "Measurable ROI", "Flexible budgeting options"],
-    cta: "Start PPC Campaign",
-    link: "/services/ppc",
+    number: "02",
+    title: "Branding & Graphic Design",
+    description:
+      "Create a professional and memorable brand identity with creative designs that communicate your business clearly across digital and print platforms.",
+    items: [
+      "Brand identity",
+      "Logo design",
+      "Social media creatives",
+      "Marketing & promotional designs",
+    ],
   },
   {
-    index: 3,
-    titleTop: "Social Media",
-    titleBottom: "Marketing",
-    img: c3,
-    alt: "Social Media Marketing",
-    description: "We help you build and engage with your audience across various social media platforms. Our services include content creation, community management, paid social advertising, and performance analytics.",
-    benefits: ["Increased brand awareness", "Better customer engagement", "Higher conversion rates", "Audience insights"],
-    cta: "Social Media Strategy",
-    link: "/services/social-media",
+    number: "03",
+    title: "Website Development",
+    description:
+      "Modern, responsive websites designed to represent your brand, provide a great user experience, and help turn visitors into customers.",
+    items: [
+      "Responsive website design",
+      "Business websites",
+      "Landing pages",
+      "Website optimization",
+    ],
   },
   {
-    index: 1,
-    titleTop: "Email",
-    titleBottom: "Marketing",
-    img: c4,
-    alt: "Email Marketing",
-    description: "Our email marketing services help you nurture leads and maintain customer relationships through personalized campaigns. We handle everything from strategy development to design, automation, and performance analysis.",
-    benefits: ["Direct customer communication", "High ROI", "Personalized messaging", "Automated workflows"],
-    cta: "Start Email Campaign",
-    link: "/services/email-marketing",
+    number: "04",
+    title: "SEO",
+    description:
+      "Improve your online visibility and help your business reach the right audience through practical search engine optimization strategies.",
+    items: [
+      "Keyword research",
+      "On-page SEO",
+      "Technical optimization",
+      "Search visibility improvement",
+    ],
   },
   {
-    index: 2,
-    titleTop: "Content",
-    titleBottom: "Creation",
-    img: c5,
-    alt: "Content Creation",
-    description: "We create high-quality, engaging content that resonates with your target audience and helps achieve your business goals. Our content services include blog posts, articles, ebooks, infographics, videos, and more.",
-    benefits: ["Increased audience engagement", "Improved brand authority", "Better search visibility", "Valuable marketing assets"],
-    cta: "Content Strategy",
-    link: "/services/content",
+    number: "05",
+    title: "Meta Ads & Google Ads",
+    description:
+      "Reach potential customers with targeted advertising campaigns across Meta and Google, supported by creative strategy, audience targeting, and campaign optimization.",
+    items: [
+      "Campaign setup",
+      "Audience targeting",
+      "Ad creative strategy",
+      "Campaign optimization",
+    ],
   },
   {
-    index: 3,
-    titleTop: "Analytics and",
-    titleBottom: "Tracking",
-    img: c6,
-    alt: "Analytics",
-    description: "We help you make data-driven decisions by setting up comprehensive tracking systems and providing actionable insights. Our services include setting up analytics tools, custom dashboards, conversion tracking, and regular reporting.",
-    benefits: ["Data-driven decision making", "Performance tracking", "User behavior insights", "ROI measurement"],
-    cta: "Analytics Setup",
-    link: "/services/analytics",
+    number: "06",
+    title: "Content Creation",
+    description:
+      "Create engaging and useful content that strengthens your brand, communicates your message, and keeps your audience interested.",
+    items: [
+      "Social media content",
+      "Promotional content",
+      "Campaign creatives",
+      "Content planning",
+    ],
   },
 ];
 ---
 
-<MainLayout 
-  title="Our Services | NextStep Digital" 
-  description="Explore our comprehensive range of digital marketing services including SEO, PPC, social media marketing, email marketing, content creation, and analytics."
+<MainLayout
+  title="Services | NextStep Digital"
+  description="Explore NextStep Digital's social media management, branding, graphic design, website development, SEO, advertising, and content creation services."
 >
-  <div class="py-16 px-4 mx-auto max-w-screen-xl lg:py-24 lg:px-6">
-    <div class="text-center mb-16">
-      <h1 class="mb-4 text-5xl font-medium leading-none tracking-tight md:text-6xl">Our Services</h1>
-      <p class="text-xl font-normal leading-7 mx-auto max-w-3xl">
-        At NextStep Digital, we offer a comprehensive range of digital marketing services designed to help your business thrive in the online world. Explore our services below to find the perfect solution for your needs.
-      </p>
-    </div>
-    
-    <div class="space-y-24">
-      {services.map((service, index) => (
-        <div class="service-item">
-          <div class="mb-12">
-            <ServiceCard
-              index={service.index}
-              titleTop={service.titleTop}
-              titleBottom={service.titleBottom}
-              img={service.img}
-              alt={service.alt}
-              link={service.link}
-            />
-          </div>
-          
-          <div class="grid md:grid-cols-2 gap-10 px-4">
-            <div>
-              <h3 class="text-2xl font-medium mb-4">What we offer</h3>
-              <p class="mb-6">{service.description}</p>
-              <a href={service.link} class="inline-flex items-center px-8 py-4 bg-green text-dark rounded-2xl hover:bg-dark hover:text-white transition-all font-medium">
-                {service.cta}
-                <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                </svg>
-              </a>
-            </div>
-            
-            <div class="bg-gray rounded-2xl p-8">
-              <h3 class="text-2xl font-medium mb-4">Benefits</h3>
-              <ul class="space-y-4">
-                {service.benefits.map(benefit => (
-                  <li class="flex items-start">
-                    <svg class="mr-2 w-5 h-5 mt-1 text-green" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                    </svg>
-                    <span>{benefit}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      ))}
-    </div>
-    
-    <div class="mt-24 text-center">
-      <Card>
-        <div class="p-10 md:p-16">
-          <h2 class="text-3xl md:text-4xl font-medium mb-6">Ready to transform your digital presence?</h2>
-          <p class="mb-10 text-xl max-w-2xl mx-auto">
-            Contact us today to discuss your digital marketing needs and discover how our services can help your business grow and succeed online.
+
+  <main>
+
+    <!-- Hero -->
+    <section class="py-16 md:py-24">
+      <div class="max-w-7xl mx-auto px-6">
+
+        <div class="max-w-4xl mx-auto text-center">
+
+          <span
+            class="inline-block bg-[#0F2347] text-white px-5 py-2 rounded-lg text-lg mb-6"
+          >
+            Our Services
+          </span>
+
+          <h1 class="text-4xl md:text-6xl font-bold leading-tight">
+            Digital Solutions
+            <br />
+            <span class="text-blue-600">Built for Growth.</span>
+          </h1>
+
+          <p class="mt-7 text-lg md:text-xl text-gray-600 leading-8 max-w-3xl mx-auto">
+            We help businesses build their brand, strengthen their online
+            presence, reach the right audience, and take their next step
+            digitally.
           </p>
-          <a href="/contact" class="inline-flex items-center px-10 py-5 bg-dark text-white rounded-2xl hover:bg-green hover:text-dark transition-all font-medium text-xl">
-            Get in touch
-          </a>
+
         </div>
-      </Card>
-    </div>
-  </div>
+
+      </div>
+    </section>
+
+
+    <!-- Services -->
+    <section class="pb-20">
+      <div class="max-w-7xl mx-auto px-6">
+
+        <div class="grid md:grid-cols-2 gap-6">
+
+          {
+            services.map((service) => (
+              <div
+  id={service.title === "Social Media Management"
+    ? "social-media-management"
+    : service.title === "Branding & Graphic Design"
+    ? "branding-graphic-design"
+    : service.title === "Website Development"
+    ? "website-development"
+    : service.title === "SEO"
+    ? "seo"
+    : service.title === "Meta Ads & Google Ads"
+    ? "meta-ads-google-ads"
+    : "content-creation"}
+  class="group scroll-mt-28 rounded-[30px] border border-gray-200 p-7 md:p-9 bg-white hover:bg-[#0F2347] hover:text-white transition-all duration-300"
+>
+                <div class="flex items-start justify-between gap-5">
+
+                  <span
+                    class="text-blue-600 group-hover:text-blue-300 text-lg font-semibold"
+                  >
+                    {service.number}
+                  </span>
+
+                  <span
+                    class="text-gray-400 group-hover:text-white/60 text-2xl"
+                  >
+                    ↗
+                  </span>
+
+                </div>
+
+                <h2 class="mt-8 text-2xl md:text-3xl font-bold">
+                  {service.title}
+                </h2>
+
+                <p
+                  class="mt-5 text-gray-600 group-hover:text-white/75 leading-7"
+                >
+                  {service.description}
+                </p>
+
+                <ul class="mt-7 space-y-3">
+
+                  {
+                    service.items.map((item) => (
+                      <li class="flex items-center gap-3">
+                        <span class="w-2 h-2 rounded-full bg-blue-600 group-hover:bg-blue-300"></span>
+                        <span>{item}</span>
+                      </li>
+                    ))
+                  }
+
+                </ul>
+
+              </div>
+            ))
+          }
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- CTA -->
+    <section class="pb-20">
+      <div class="max-w-7xl mx-auto px-6">
+
+        <div
+          class="bg-[#0F2347] text-white rounded-[35px] px-8 py-14 md:px-16 text-center"
+        >
+
+          <h2 class="text-3xl md:text-5xl font-bold">
+            Ready to Take Your Next Step?
+          </h2>
+
+          <p class="mt-5 text-white/75 text-lg max-w-2xl mx-auto leading-8">
+            Let's discuss your business goals and find the right digital
+            solutions to help you grow.
+          </p>
+
+     <a
+  href="/#contact"
+  class="relative z-10 inline-flex mt-8 px-8 py-4 bg-white text-[#0F2347] rounded-2xl font-semibold hover:bg-blue-600 hover:text-white transition"
+>
+  Get Free Consultation
+</a>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
 </MainLayout>
-
-<style>
-  .service-item:nth-child(even) {
-    @apply bg-gray bg-opacity-20 py-16 -mx-4 px-4;
-  }
-  
-  @media (min-width: 768px) {
-    .service-item:nth-child(even) {
-      @apply -mx-6 px-6;
-    }
-  }
-</style>
-
-
