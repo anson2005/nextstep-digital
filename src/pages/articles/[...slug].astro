@@ -1,11 +1,18 @@
 ---
 import MainLayout from "../../layouts/MainLayout.astro";
 import Tags from "../../components/ui/Tags.astro";
-import { getEntry } from 'astro:content';
+import { getEntry, getCollection } from 'astro:content';
 import { formatDate } from "../../utils";
 
 import "../../styles/global.css";
 
+export async function getStaticPaths() {
+  const articles = await getCollection('blog');
+
+  return articles.map((article) => ({
+    params: { slug: article.slug },
+  }));
+}
 const { slug } = Astro.params;
 
 if(slug === undefined) {
