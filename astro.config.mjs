@@ -3,7 +3,7 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://nextstepdigital.in',
+  site: 'https://www.nextstepdigital.in',
   integrations: [tailwind(), sitemap()],
   output: 'static',
 });
