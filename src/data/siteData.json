@@ -1,10 +1,8 @@
 {
   "title": "NextStep Digital",
-  "description": "NextStep Digital is a simple and minimalistic blog theme for Ghost. It is designed to be a perfect starting point for your blog project.",
+  "description": "NextStep Digital is a digital marketing agency helping businesses grow through social media marketing, SEO, paid advertising, website development, and creative digital solutions.",
   "image": {
-    "src": "https://github.com/manulthanura/NextStep Digital/raw/main/public/cover.png",
+    "src": "https://www.nextstepdigital.in/cover.png",
     "alt": "NextStep Digital"
   }
 }
-
-
