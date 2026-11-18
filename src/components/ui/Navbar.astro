@@ -1,104 +1,42 @@
 ---
-import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
-
 const menuitems = [
   { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
   { href: '/services', label: 'Services' },
- 
+  { href: '/about', label: 'About' },
   { href: '/pricing', label: 'Pricing' },
   { href: '/#contact', label: 'Contact' },
 ];
-const navButton = { href: '#contact', label: 'Get Free Consultation' };
 ---
-
-<div class="mt-20">
-  <nav class="w-full top-0 left-0 z-50 fixed bg-white">
-    <header class="flex flex-col lg:flex-row justify-between items-center my-3 md:my-5 px-6 md:px-32">
-      <Astronav>
-        <div class="flex w-full lg:w-auto items-center justify-between">
-          <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
-       <img
-  src="/nextstep-logo.png"
- class="h-16 md:h-20 w-auto"
-  alt="NextStep Digital"
-/>
-          </a>
-          <div class="block lg:hidden">
-            <div id="menu-icon" class="w-8 h-8 text-black cursor-pointer">
-              <!-- Open (hamburger) icon -->
-              <svg id="open-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="w-8 h-8">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-              </svg>
-              <!-- Close (X) icon -->
-              <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="w-8 h-8 hidden">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-              </svg>
-            </div>
-          </div>
-        </div>
-        
-        <nav class="hidden w-full lg:w-auto mt-2 lg:flex lg:mt-0" id="menu-items">
-          <ul class="font-medium flex flex-col p-4 lg:p-0 mt-4 border rounded-lg lg:flex-row lg:space-x-8 lg:mt-0 lg:border-0">
-            {menuitems.map((item, index) => (
-              <li>
-                <a 
-                  href={item.href} 
-                  class="mobile-nav-link block py-2 px-3 text-black rounded lg:bg-transparent lg:p-0"
-                  data-close-menu="true"
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
-            <div class="lg:hidden flex items-center justify-center mt-3 gap-4">
-              <a 
-                class="mobile-nav-link px-9 py-5 rounded-2xl border border-zinc-900 bg-white hover:bg-black text-black hover:text-white inline-flex" 
-                href={navButton.href}
-                data-close-menu="true"
-              >
-                <h2 class="text-center text-xl font-normal leading-7">{navButton.label}</h2>
-              </a>
-            </div>
-          </ul>
-        </nav>
-      </Astronav>
-
-      <div>
-        <div class="hidden lg:flex items-center gap-4">
-          <a class="px-9 py-5 rounded-2xl bg-zinc-900 hover:bg-blue-900 text-white inline-flex transition-all duration-300" href={navButton.href}>
-            <h2 class="text-center text-xl font-normal leading-7">{navButton.label}</h2>
-          </a>
-        </div>
-      </div>
-    </header>
+<header class="ns-nav-shell">
+  <nav class="ns-nav" aria-label="Main navigation">
+    <a href="/" class="ns-nav-logo" aria-label="NextStep Digital home"><img src="/nextstep-logo.png" alt="NextStep Digital" /></a>
+    <button class="ns-menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="ns-nav-links"><span></span><span></span></button>
+    <div class="ns-nav-links" id="ns-nav-links">
+      {menuitems.map((item) => <a href={item.href}>{item.label}</a>)}
+      <a class="ns-nav-cta" href="/#contact">Get a Free Consultation <span>↗</span></a>
+    </div>
   </nav>
-</div>
-
-<script is:inline>
-  // Get references to the menu icon, open/close icons, and menu items
-  const menuIcon = document.getElementById('menu-icon');
-  const openIcon = document.getElementById('open-icon');
-  const closeIcon = document.getElementById('close-icon');
-  const menuItems = document.getElementById('menu-items');
-  const closeMenuItems = document.querySelectorAll('[data-close-menu="true"]');  // Select all items with the 'data-close-menu' attribute
-
-  // Toggle the menu visibility and icon when the menu icon is clicked
-  menuIcon.addEventListener('click', () => {
-    menuItems.classList.toggle('hidden');  // Toggle the 'hidden' class on the menu
-
-    // Toggle between open and close icons
-    openIcon.classList.toggle('hidden');
-    closeIcon.classList.toggle('hidden');
+</header>
+<style>
+  .ns-nav-shell{position:fixed;z-index:100;inset:0 0 auto;background:rgba(4,17,41,.92);backdrop-filter:blur(18px);border-bottom:1px solid rgba(132,185,255,.16)}
+  .ns-nav{width:min(1160px,calc(100% - 48px));height:82px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:30px}
+  .ns-nav-logo{display:flex;align-items:center;flex:none}.ns-nav-logo img{width:145px;height:auto;max-height:54px;object-fit:contain;border-radius:5px}
+  .ns-nav-links{display:flex;align-items:center;gap:27px}.ns-nav-links>a{color:#e5efff;font-size:13px;font-weight:600;transition:color .2s}.ns-nav-links>a:hover{color:#70b5ff}.ns-nav-links .ns-nav-cta{border:1px solid #3989ff;border-radius:99px;padding:12px 17px;box-shadow:0 0 18px #1769ed35;color:#fff}.ns-nav-cta span{margin-left:8px;color:#8fc4ff;font-size:16px}
+  .ns-menu-toggle{display:none;background:transparent;border:1px solid #5c8dcb;border-radius:10px;width:42px;height:40px;align-items:center;justify-content:center;flex-direction:column;gap:5px}.ns-menu-toggle span{display:block;width:18px;height:2px;background:#fff;border-radius:4px}
+  @media(max-width:850px){.ns-nav{height:70px;width:calc(100% - 34px)}.ns-nav-logo img{width:126px}.ns-menu-toggle{display:flex}.ns-nav-links{display:none;position:absolute;top:70px;left:0;right:0;padding:18px 22px 24px;background:#061633;border-bottom:1px solid #ffffff24;align-items:stretch;gap:0;flex-direction:column}.ns-nav-links.is-open{display:flex}.ns-nav-links>a{padding:13px 5px;border-bottom:1px solid #ffffff12}.ns-nav-links .ns-nav-cta{text-align:center;margin-top:14px;border:1px solid #3989ff;padding:14px}}
+</style>
+<script>
+  const navToggle = document.querySelector<HTMLButtonElement>(".ns-menu-toggle");
+  const navLinks = document.querySelector<HTMLElement>("#ns-nav-links");
+  navToggle?.addEventListener("click", () => {
+    const open = navLinks?.classList.toggle("is-open") ?? false;
+    navToggle.setAttribute("aria-expanded", String(open));
+    navToggle.setAttribute("aria-label", open ? "Close navigation menu" : "Open navigation menu");
   });
-
-  // Close the menu when any item is clicked
-  closeMenuItems.forEach(item => {
-    item.addEventListener('click', () => {
-      menuItems.classList.add('hidden');  // Add the 'hidden' class to hide the menu
-      openIcon.classList.remove('hidden');  // Show the open (hamburger) icon
-      closeIcon.classList.add('hidden');  // Hide the close (X) icon
-    });
-  });
+  if (navLinks) {
+    navLinks.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => {
+      navLinks.classList.remove("is-open");
+      navToggle?.setAttribute("aria-expanded", "false");
+    }));
+  }
 </script>
-

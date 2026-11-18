@@ -7,13 +7,11 @@ type Props = {
   // If not given, this defaults to site data
   // Url is automatic
   // Robots are optional
-  // Frontmatter triggers a CMS post type
   title: string;
   description: string;
   url: string;
   image?: { src: string; alt: string };
   robots?: boolean;
-  frontmatter?: any;
 };
 
 const {
@@ -21,16 +19,10 @@ const {
   description,
   url = Astro.url,
   image,
-  frontmatter,
   robots,
 } = Astro.props;
 
-// Again, frontmatter triggers CMS post type
-const jsonLD = jsonLDGenerator({
-  type: frontmatter ? "post" : "website",
-  post: frontmatter,
-  url,
-});
+const jsonLD = jsonLDGenerator({ url });
 ---
 
 <!-- SEO -->
@@ -42,7 +34,7 @@ const jsonLD = jsonLDGenerator({
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:url" content={url} />
-<meta property="og:type" content={frontmatter ? "article" : "website"} />
+<meta property="og:type" content="website" />
 <meta property="og:image" content={image?.src || siteData.image.src} />
 <meta property="og:image:url" content={image?.src || siteData.image.src} />
 <meta

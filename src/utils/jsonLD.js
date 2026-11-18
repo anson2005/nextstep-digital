@@ -1,31 +1,6 @@
 import siteData from "../data/siteData.json";
-import { slugify } from "./slugify";
 
-export default function jsonLDGenerator({ type, post, url }) {
-  // Blog/article structured data
-  if (type === "post") {
-    return `<script type="application/ld+json">
-      ${JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        mainEntityOfPage: {
-          "@type": "WebPage",
-          "@id": url,
-        },
-        headline: post.title,
-        description: post.description,
-        image: post.image.src,
-        author: {
-          "@type": "Person",
-          name: post.author,
-          url: `https://www.nextstepdigital.in/author/${slugify(post.author)}`,
-        },
-        datePublished: post.date,
-      })}
-    </script>`;
-  }
-
-  // NextStep Digital organization + website structured data
+export default function jsonLDGenerator() {
   return `<script type="application/ld+json">
     ${JSON.stringify({
       "@context": "https://schema.org",
@@ -45,18 +20,14 @@ export default function jsonLDGenerator({ type, post, url }) {
             addressRegion: "Kerala",
             addressCountry: "IN",
           },
-          sameAs: [
-            "https://www.instagram.com/nextstepdigital.india/",
-          ],
+          sameAs: ["https://www.instagram.com/nextstepdigital.india/"],
         },
         {
           "@type": "WebSite",
           "@id": "https://www.nextstepdigital.in/#website",
           name: "NextStep Digital",
           url: "https://www.nextstepdigital.in/",
-          publisher: {
-            "@id": "https://www.nextstepdigital.in/#organization",
-          },
+          publisher: { "@id": "https://www.nextstepdigital.in/#organization" },
         },
       ],
     })}

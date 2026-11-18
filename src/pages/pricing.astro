@@ -3,7 +3,7 @@ import MainLayout from "../layouts/MainLayout.astro";
 ---
 
 <MainLayout title="Pricing">
-  <main class="bg-white">
+  <main class="bg-white ns-pricing-detail">
 
     <!-- Pricing Header -->
     <section class="px-6 pt-16 pb-10 md:pt-20 md:pb-14">
@@ -26,9 +26,9 @@ import MainLayout from "../layouts/MainLayout.astro";
       <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-6 lg:gap-8">
 
         <!-- STARTER -->
-        <div class="rounded-[28px] overflow-hidden border border-[#0F2347]/15 bg-white shadow-sm">
+        <div data-tilt class="ns-detail-card rounded-[28px] overflow-hidden border border-[#0F2347]/15 bg-white shadow-sm">
 
-          <div class="bg-[#0F2347] text-white px-6 py-8 text-center">
+          <div class="ns-detail-card-head px-6 py-8 text-center">
             <h2 class="text-2xl font-bold">
               Starter
             </h2>
@@ -73,14 +73,12 @@ import MainLayout from "../layouts/MainLayout.astro";
 
 
         <!-- GROWTH -->
-        <div class="rounded-[28px] overflow-hidden border-2 border-[#0F2347] bg-white shadow-md relative">
+        <div data-tilt class="ns-detail-card rounded-[28px] overflow-hidden border border-[#0F2347]/15 bg-white shadow-sm relative">
 
           <!-- Popular -->
-          <div class="bg-[#0F2347] text-white text-center py-2 text-sm font-semibold">
-            MOST POPULAR
-          </div>
+          <div class="ns-detail-popular">MOST POPULAR</div>
 
-          <div class="bg-[#0F2347] text-white px-6 py-8 text-center">
+          <div class="ns-detail-card-head px-6 py-8 text-center">
 
             <h2 class="text-2xl font-bold">
               Growth
@@ -128,9 +126,9 @@ import MainLayout from "../layouts/MainLayout.astro";
 
 
         <!-- PREMIUM -->
-        <div class="rounded-[28px] overflow-hidden border border-[#0F2347]/15 bg-white shadow-sm">
+        <div data-tilt class="ns-detail-card rounded-[28px] overflow-hidden border border-[#0F2347]/15 bg-white shadow-sm">
 
-          <div class="bg-[#0F2347] text-white px-6 py-8 text-center">
+          <div class="ns-detail-card-head px-6 py-8 text-center">
 
             <h2 class="text-2xl font-bold">
               Premium
@@ -246,5 +244,35 @@ import MainLayout from "../layouts/MainLayout.astro";
       </div>
     </section>
 
+    <script>
+      const pricingTiltCards = document.querySelectorAll<HTMLElement>(".ns-pricing-detail [data-tilt]");
+      if (window.matchMedia("(hover: hover) and (pointer: fine)").matches && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        pricingTiltCards.forEach((card) => {
+          card.addEventListener("pointermove", (event) => {
+            const rect = card.getBoundingClientRect();
+            const x = (event.clientX - rect.left) / rect.width;
+            const y = (event.clientY - rect.top) / rect.height;
+            card.style.setProperty("--rx", `${(0.5 - y) * 4}deg`);
+            card.style.setProperty("--ry", `${(x - 0.5) * 5}deg`);
+          });
+          card.addEventListener("pointerleave", () => {
+            card.style.setProperty("--rx", "0deg");
+            card.style.setProperty("--ry", "0deg");
+          });
+        });
+      }
+    </script>
+    <style>
+      .ns-pricing-detail .ns-detail-card{position:relative;overflow:hidden;background:linear-gradient(145deg,#fff,#f3f7ff);border:1px solid #d9e5f5;box-shadow:0 14px 34px #0a28530d;transform:perspective(1000px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transform-style:preserve-3d;transition:transform .25s ease,background .3s ease,color .3s ease,box-shadow .3s ease,border-color .3s ease}
+      .ns-pricing-detail .ns-detail-card-head{background:transparent;color:#0f2347;border-bottom:1px solid #e1eaf5}
+      .ns-pricing-detail .ns-detail-card-head p{color:#64748b}
+      .ns-pricing-detail .ns-detail-card-head span{color:#64748b!important}
+      .ns-pricing-detail .ns-detail-card ul{transition:color .25s}
+      .ns-pricing-detail .ns-detail-card a{transition:background .2s,transform .2s}
+      .ns-pricing-detail .ns-detail-popular{position:absolute;z-index:2;top:15px;right:15px;padding:6px 10px;border-radius:99px;background:#dcecff;color:#0a3470;font-size:9px;font-weight:900;letter-spacing:.08em}
+      @media(hover:hover) and (pointer:fine){.ns-pricing-detail .ns-detail-card:hover{background:linear-gradient(145deg,#124b9e,#071e48);border-color:#398cff;box-shadow:0 24px 52px #0a4cae35;color:#fff;transform:perspective(1000px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(-7px)}.ns-pricing-detail .ns-detail-card:hover .ns-detail-card-head{background:transparent;color:#fff;border-color:#ffffff30}.ns-pricing-detail .ns-detail-card:hover .ns-detail-card-head p,.ns-pricing-detail .ns-detail-card:hover ul{color:#d6e8ff}.ns-pricing-detail .ns-detail-card:hover a{background:#fff;color:#0f2347}}
+      @media(max-width:767px){.ns-pricing-detail .ns-detail-card:active{background:linear-gradient(145deg,#124b9e,#071e48);color:#fff}.ns-pricing-detail .ns-detail-card:active .ns-detail-card-head{color:#fff;background:transparent}.ns-pricing-detail .ns-detail-card:active .ns-detail-card-head p{color:#d6e8ff}}
+      @media(prefers-reduced-motion:reduce){.ns-pricing-detail .ns-detail-card{transition:none}}
+    </style>
   </main>
 </MainLayout>
